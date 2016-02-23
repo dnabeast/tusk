@@ -9,6 +9,8 @@ class Plugins
 {
 
 	public function tusk($string, $pluginDir = null) {
+		if (!$pluginDir) { $pluginDir = app_path().'/Plugins/lib/'; }
+
 		$pluginList = $this->pluginList($string, $pluginDir);
 		$string = $this->replaceWithPlugins($string, $pluginList, $pluginDir);
 
@@ -37,7 +39,6 @@ class Plugins
 	}
 
 	public function pluginList($string, $pluginDir){
-		if (!$pluginDir) { $pluginDir = app_path().'/Plugins/lib/'; }
 		$plugins = array_diff(scandir($pluginDir), array('..', '.')); // get file list
 
 		return $plugins;
