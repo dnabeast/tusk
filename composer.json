@@ -1,0 +1,24 @@
+{
+    "name": "typesaucer/tusk",
+    "description": "Plugin html and php files for Typesaucer",
+    "license": "MIT",
+    "keywords": ["typesaucer"],
+    "authors": [
+        {
+            "name": "Dan Beeston",
+            "email": "dan@civicnet.com.au"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Typesaucer\\Tusk\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    }
+}
