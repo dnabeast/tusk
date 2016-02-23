@@ -28,12 +28,13 @@ class Plugins
 		{
 			if ($this->extension($pluginName) == 'html') {
 				$plugin = file_get_contents($pluginDir.$pluginName);
+				$string = str_replace('[[- '.$pluginName.' -]]', $plugin, $string);
 			}
 			if ($this->extension($pluginName) == 'php') {
 				$plugin = include($pluginDir.$pluginName);
+				$string = str_replace('[[- '.$pluginName.' -]]', $plugin, $string);
 			}
 
-			$string = str_replace('[[- '.$pluginName.' -]]', $plugin, $string);
 		}
 		return $string;
 	}
