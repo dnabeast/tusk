@@ -17,7 +17,7 @@ class TuskServiceProvider extends ServiceProvider
     {
 
         Blade::directive('tusk', function($content){
-            return "<?= app('Typesaucer/Tusk/Plugin')->tusk($content); ?>";
+            return "<?= app('Typesaucer/Tusk/Plugins')->tusk($content); ?>";
         });
 
     }
@@ -29,9 +29,9 @@ class TuskServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('Typesaucer/Tusk/Plugin', function()
+        $this->app->singleton('Typesaucer/Tusk/Plugins', function()
         {
-            return new Plugin;
+            return new Plugins;
         });
     }
 }
