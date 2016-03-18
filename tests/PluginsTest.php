@@ -23,4 +23,20 @@ class MenuTest extends PHPUnit_Framework_TestCase
         $this->assertEquals((new Plugins)->extension($name), 'html');
     }
 
+    public function test_for_unfound_plugin_creates_new_plugin()
+    {
+        $string = 'Lorem ipsum [[- plugindoesntexist.php -]] ?? [[- plugindoesntexist2.php -]]';
+        (new Plugins)->tusk($string, 'tests/plugins/lib/');
+        $plugins = array_diff(scandir('tests/plugins/lib/'), array('..', '.', '.DS_Store')); // get file list
+
+        $this->assertContains( 'plugindoesntexist.php', $plugins);
+        $this->assertContains( 'plugindoesntexist2.php', $plugins);
+
+        unlink('tests/plugins/lib/plugindoesntexist.php');
+        unlink('tests/plugins/lib/plugindoesntexist2.php');
+
+    }
+
+
+
 }

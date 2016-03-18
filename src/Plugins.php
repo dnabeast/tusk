@@ -14,6 +14,8 @@ class Plugins
 		$pluginList = $this->pluginList($string, $pluginDir);
 		$string = $this->replaceWithPlugins($string, $pluginList, $pluginDir);
 
+		$this->createNewPlugin($string, $pluginDir);
+
 		return $string;
 	}
 
@@ -34,15 +36,31 @@ class Plugins
 				$plugin = include($pluginDir.$pluginName);
 				$string = str_replace('[[- '.$pluginName.' -]]', $plugin, $string);
 			}
-
 		}
 		return $string;
 	}
 
 	public function pluginList($string, $pluginDir){
-		$plugins = array_diff(scandir($pluginDir), array('..', '.')); // get file list
+		$plugins = array_diff(scandir($pluginDir), array('..', '.', '.DS_Store')); // get file list
 
 		return $plugins;
+	}
+
+	public function createNewPlugin($string, $pluginDir){
+		preg_match_all('/(?<=\[\[\-\s).*?(?=\s\-\]\])/', $string, $matches);
+
+		foreach ($matches[0] as $match) {
+			file_put_contents($pluginDir.$match,'
+				<?php
+
+				use App\Gallery\Gallery;
+
+				$view = (new Gallery("'.$match.'""))->make();
+
+				return $view->render();
+				');
+		}
+
 	}
 
 }
