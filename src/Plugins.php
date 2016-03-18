@@ -55,7 +55,7 @@ class Plugins
 
 				use App\Gallery\Gallery;
 
-				$view = (new Gallery("'.$match.'""))->make();
+				$view = (new Gallery("'.$match.'"))->make();
 
 				return $view->render();
 				');
