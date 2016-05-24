@@ -1,2 +1,2 @@
-<?php
-return 'replacement php';
+HTML bit <?php
+echo 'replacement php';

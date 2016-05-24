@@ -28,14 +28,12 @@ class Plugins
 
 		foreach ($plugins as $pluginName)
 		{
-			if ($this->extension($pluginName) == 'html') {
-				$plugin = file_get_contents($pluginDir.$pluginName);
-				$string = str_replace('[[- '.$pluginName.' -]]', $plugin, $string);
-			}
-			if ($this->extension($pluginName) == 'php') {
-				$plugin = include($pluginDir.$pluginName);
-				$string = str_replace('[[- '.$pluginName.' -]]', $plugin, $string);
-			}
+			ob_start();
+			include($pluginDir.$pluginName);
+			$plugin = ob_get_contents();
+			ob_end_clean();
+
+			$string = str_replace('[[- '.$pluginName.' -]]', $plugin, $string);
 		}
 		return $string;
 	}
@@ -50,7 +48,7 @@ class Plugins
 		preg_match_all('/(?<=\[\[\-\s).*?(?=\s\-\]\])/', $string, $matches);
 
 		foreach ($matches[0] as $match) {
-			file_put_contents($pluginDir.$match,'
+			file_put_contents($pluginDir.$match.".php",'
 				<?php
 
 				use App\Gallery\Gallery;
@@ -58,6 +56,10 @@ class Plugins
 				$view = (new Gallery("'.$match.'"))->make();
 
 				return $view->render();
+
+				?>
+
+				<?php return;
 				');
 		}
 

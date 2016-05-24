@@ -7,13 +7,13 @@ class MenuTest extends PHPUnit_Framework_TestCase
 
     public function test_if_a_tusk_is_replaced_with_a_plugin_file()
     {
-        $string = 'Lorem ipsum [[- dolor.html -]]';
+        $string = 'Lorem ipsum [[- dolorhtml.php -]]';
         $expected = 'Lorem ipsum replacement';
 
         $this->assertEquals( (new Plugins)->tusk($string, 'tests/plugins/lib/'), $expected);
 
         $string = 'Lorem ipsum [[- dolor.php -]]';
-        $expected = 'Lorem ipsum replacement php';
+        $expected = 'Lorem ipsum HTML bit replacement php';
         $this->assertEquals( (new Plugins)->tusk($string, 'tests/plugins/lib/'), $expected);
     }
 
@@ -25,7 +25,7 @@ class MenuTest extends PHPUnit_Framework_TestCase
 
     public function test_for_unfound_plugin_creates_new_plugin()
     {
-        $string = 'Lorem ipsum [[- plugindoesntexist.php -]] ?? [[- plugindoesntexist2.php -]]';
+        $string = 'Lorem ipsum [[- plugindoesntexist -]] ?? [[- plugindoesntexist2 -]]';
         (new Plugins)->tusk($string, 'tests/plugins/lib/');
         $plugins = array_diff(scandir('tests/plugins/lib/'), array('..', '.', '.DS_Store')); // get file list
 
@@ -36,7 +36,6 @@ class MenuTest extends PHPUnit_Framework_TestCase
         unlink('tests/plugins/lib/plugindoesntexist2.php');
 
     }
-
 
 
 }
