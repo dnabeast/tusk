@@ -7,12 +7,12 @@ class MenuTest extends PHPUnit_Framework_TestCase
 
     public function test_if_a_tusk_is_replaced_with_a_plugin_file()
     {
-        $string = 'Lorem ipsum [[- dolorhtml.php -]]';
+        $string = 'Lorem ipsum [[- dolorhtml -]]';
         $expected = 'Lorem ipsum replacement';
 
         $this->assertEquals( (new Plugins)->tusk($string, 'tests/plugins/lib/'), $expected);
 
-        $string = 'Lorem ipsum [[- dolor.php -]]';
+        $string = 'Lorem ipsum [[- dolor -]]';
         $expected = 'Lorem ipsum HTML bit replacement php';
         $this->assertEquals( (new Plugins)->tusk($string, 'tests/plugins/lib/'), $expected);
     }

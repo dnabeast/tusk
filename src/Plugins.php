@@ -28,8 +28,7 @@ class Plugins
 			include($pluginDir.$pluginName);
 			$plugin = ob_get_contents();
 			ob_end_clean();
-
-			$string = str_replace('[[- '.$pluginName.' -]]', $plugin, $string);
+			$string = str_replace('[[- '.substr($pluginName, 0, -4).' -]]', $plugin, $string);
 		}
 		return $string;
 	}
