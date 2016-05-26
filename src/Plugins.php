@@ -44,17 +44,12 @@ class Plugins
 
 		foreach ($matches[0] as $match) {
 			file_put_contents($pluginDir.$match.".php",'
-				<?php
+< ?php
+	use App\Gallery\Gallery;
+	$view = (new Gallery("'.$match.'"))->make();
+	echo $view->render();
+?>
 
-				use App\Gallery\Gallery;
-
-				$view = (new Gallery("'.$match.'"))->make();
-
-				echo $view->render();
-
-				?>
-
-				<?php return;
 				');
 		}
 
