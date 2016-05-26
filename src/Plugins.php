@@ -14,15 +14,11 @@ class Plugins
 		$pluginList = $this->pluginList($string, $pluginDir);
 		$string = $this->replaceWithPlugins($string, $pluginList, $pluginDir);
 
-		$this->createNewPlugin($string, $pluginDir);
+		$this->createNewPlugins($string, $pluginDir);
 
 		return $string;
 	}
 
-	public function extension($name){
-		$array = explode('.', $name);
-		return array_pop($array);
-	}
 
 	public function replaceWithPlugins($string, $plugins, $pluginDir){
 
@@ -44,7 +40,7 @@ class Plugins
 		return $plugins;
 	}
 
-	public function createNewPlugin($string, $pluginDir){
+	public function createNewPlugins($string, $pluginDir){
 		preg_match_all('/(?<=\[\[\-\s).*?(?=\s\-\]\])/', $string, $matches);
 
 		foreach ($matches[0] as $match) {
@@ -55,7 +51,7 @@ class Plugins
 
 				$view = (new Gallery("'.$match.'"))->make();
 
-				return $view->render();
+				echo $view->render();
 
 				?>
 

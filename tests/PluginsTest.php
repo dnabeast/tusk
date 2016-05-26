@@ -17,11 +17,6 @@ class MenuTest extends PHPUnit_Framework_TestCase
         $this->assertEquals( (new Plugins)->tusk($string, 'tests/plugins/lib/'), $expected);
     }
 
-    public function test_if_the_extension_to_the_name_is_correct()
-    {
-        $name = 'bros.fine.html';
-        $this->assertEquals((new Plugins)->extension($name), 'html');
-    }
 
     public function test_for_unfound_plugin_creates_new_plugin()
     {
