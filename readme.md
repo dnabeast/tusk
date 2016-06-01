@@ -1,10 +1,10 @@
 Plugin code replacement in a string for Laravel
 ===============================================
 
-# Problem
+## Problem
 Your user needs to inject a chunk of code into a basic string using their CMS functionality. You want them to be able to set a Google map or text from a database but you don't want them to be able to run code.
 
-# Solution
+## Solution
 Set up their code and allow them to reference it in their text string.
 
 Installing
@@ -47,9 +47,9 @@ Your string <iframe>Map</iframe>. Rest of String
 ```
 
 ## Use Case
-Your user can update their contact page with basic text but you don't want to allow iframes. You can still allow them to enter [[- googlemap -]] to inject the google map html required to embed a map.
+1. Your user can update their contact page with basic text but you don't want to allow iframes. You can still allow them to enter [[- googlemap -]] to inject the google map html required to embed a map.
 
-You have code that can spit out a list of links from the database. You also have basic pages on the site that allow the user to update their content and they can include the list code without having access to the actual code by simply entering [[- linklist -]].
+2. You have code that can spit out a list of links from the database. You also have basic pages on the site that allow the user to update their content and they can include the list code without having access to the actual code by simply entering [[- linklist -]].
 
 ## Potential pitfall
 You plugin file can be all html but if it has php you need to echo the result. If you return it nothing will display.
@@ -58,5 +58,5 @@ ie.
 <?php
 	$x = 34+65;
 	return $x; // <- This wont work. You must echo it.
-	?>
+?>
 ```

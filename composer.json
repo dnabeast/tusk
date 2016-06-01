@@ -1,6 +1,6 @@
 {
     "name": "dnabeast/tusk",
-    "description": "Creates a plugin file to replace basic text with any php or html code",
+    "description": "Creates a plugin file to replacetext in a string with any php or html code",
     "license": "MIT",
     "keywords": ["plugin", "blade"],
     "authors": [

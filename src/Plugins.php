@@ -45,7 +45,7 @@ class Plugins
 		foreach ($matches[0] as $match) {
 			file_put_contents($pluginDir.$match.".php",'
 <?php
-	echo \'<scan style="opacity:0.2">Plugin not ready</span>\';
+	echo \'<span style="opacity:0.2">Plugin not ready</span>\';
 ?>
 				');
 		}
