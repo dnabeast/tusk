@@ -1,8 +1,8 @@
 <?php
 
-use Typesaucer\Tusk\Plugins;
+use DNABeast\Tusk\Plugins;
 
-class MenuTest extends PHPUnit_Framework_TestCase
+class PluginsTest extends PHPUnit_Framework_TestCase
 {
 
     public function test_if_a_tusk_is_replaced_with_a_plugin_file()

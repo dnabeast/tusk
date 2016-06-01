@@ -1,6 +1,6 @@
 <?php
 
-namespace Typesaucer\Tusk;
+namespace DNABeast\Tusk;
 
 /**
 *
@@ -44,12 +44,9 @@ class Plugins
 
 		foreach ($matches[0] as $match) {
 			file_put_contents($pluginDir.$match.".php",'
-< ?php
-	use App\Gallery\Gallery;
-	$view = (new Gallery("'.$match.'"))->make();
-	echo $view->render();
+<?php
+	echo \'<scan style="opacity:0.2">Plugin not ready</span>\';
 ?>
-
 				');
 		}
 

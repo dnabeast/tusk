@@ -1,8 +1,8 @@
 {
-    "name": "typesaucer/tusk",
-    "description": "Plugin html and php files for Typesaucer",
+    "name": "dnabeast/tusk",
+    "description": "Creates a plugin file to replace basic text with any php or html code",
     "license": "MIT",
-    "keywords": ["typesaucer"],
+    "keywords": ["plugin", "blade"],
     "authors": [
         {
             "name": "Dan Beeston",
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Typesaucer\\Tusk\\": "src/"
+            "DNABeast\\Tusk\\": "src/"
         }
     },
     "require-dev": {

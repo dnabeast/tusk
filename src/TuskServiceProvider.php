@@ -1,8 +1,8 @@
 <?php
 
-namespace Typesaucer\Tusk;
+namespace DNABeast\Tusk;
 
-use Typesaucer\Tusk\Plugins;
+use DNABeast\Tusk\Plugins;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,7 +17,7 @@ class TuskServiceProvider extends ServiceProvider
     {
 
         Blade::directive('tusk', function($content){
-            return "<?= app('Typesaucer/Tusk/Plugins')->tusk($content); ?>";
+            return "<?= app('DNABeast/Tusk/Plugins')->tusk($content); ?>";
         });
 
     }
@@ -29,7 +29,7 @@ class TuskServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('Typesaucer/Tusk/Plugins', function()
+        $this->app->singleton('DNABeast/Tusk/Plugins', function()
         {
             return new Plugins;
         });
