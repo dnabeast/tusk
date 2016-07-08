@@ -23,8 +23,12 @@ After updating composer, add the ServiceProvider to the providers array in confi
 ```
 DNABeast\Tusk\TuskServiceProvider::class,
 ```
-
 Add the directory Plugin/lib to your App directory to contain your plugin files.
+
+You may need to clear the view cache
+```
+php artisan view:clear
+```
 
 Usage
 =====
