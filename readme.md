@@ -12,13 +12,14 @@ Installing
 
 Add the dependency to your project:
 
-```bash
-composer require DNABeast/tusk:dev-master
+```
+composer require DNABeast/tusk
 ```
 
-After updating composer, add the ServiceProvider to the providers array in config/app.php
 
 ### Laravel 5.2:
+
+After updating composer, add the ServiceProvider to the providers array in config/app.php
 
 ```
 DNABeast\Tusk\TuskServiceProvider::class,
