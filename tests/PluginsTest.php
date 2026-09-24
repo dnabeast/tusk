@@ -1,5 +1,7 @@
 <?php
 
+namespace DNABeast\Tusk\Tests;
+
 use DNABeast\Tusk\Plugins;
 use PHPUnit\Framework\TestCase;
 

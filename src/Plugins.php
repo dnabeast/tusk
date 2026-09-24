@@ -9,7 +9,7 @@ class Plugins
 {
 
 	public function tusk($string, $pluginDir = null) {
-		if (!$pluginDir) { $pluginDir = app_path().'/Plugins/lib/'; }
+		if (!$pluginDir) { $pluginDir = app_path('/Plugins/lib/'); }
 
 		$pluginList = $this->pluginList($string, $pluginDir);
 		$string = $this->replaceWithPlugins($string, $pluginList, $pluginDir);
@@ -34,9 +34,7 @@ class Plugins
 	}
 
 	public function pluginList($string, $pluginDir){
-		$plugins = array_diff(scandir($pluginDir), array('..', '.', '.DS_Store')); // get file list
-
-		return $plugins;
+		return array_diff(scandir($pluginDir), array('..', '.', '.DS_Store'));
 	}
 
 	public function createNewPlugins($string, $pluginDir){
